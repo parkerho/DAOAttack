@@ -18,7 +18,7 @@ def _attack() -> bool:
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
     DAO.withdraw(deposit_amount)
-
+    print(“checkpoint2”, flush=true)
     return true
 
 @external
@@ -26,7 +26,7 @@ def _attack() -> bool:
 def attack(dao_address:address):
     self.dao_address = dao_address
     deposit_amount: uint256 = msg.value    
- 
+    print(“checkpoint1”, flush=true)
     # Attack cannot withdraw more than what exists in the DAO
     if dao_address.balance < msg.value:
         deposit_amount = dao_address.balance
@@ -43,5 +43,6 @@ def attack(dao_address:address):
 def __default__():
     # This method gets invoked when ETH is sent to this contract's address (i.e., when "withdraw" is called on the DAO contract)
     # TODO: Add code here to complete the recursive call
+    print(“checkpoint3”, flush=true)
     userBalances += msg_value
     _attack
