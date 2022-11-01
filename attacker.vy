@@ -10,7 +10,6 @@ owner_address: public(address)
 def __init__():
     self.dao_address = empty(address)
     self.owner_address = empty(address)
-    self.userBalances = 0  
 
 @internal
 def _attack() -> bool:
@@ -30,7 +29,7 @@ def attack(dao_address:address):
     self.dao_address = dao_address
     deposit_amount: uint256 = msg.value
     self.owner_address = msg.sender 
- 
+    self.userBalances = 0  
     # Attack cannot withdraw more than what exists in the DAO
     if dao_address.balance < msg.value:
         deposit_amount = dao_address.balance
