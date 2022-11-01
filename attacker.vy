@@ -17,7 +17,7 @@ def _attack() -> bool:
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
-    while(DAO.withdraw(deposit_amount))
+    DAO.withdraw(deposit_amount)
 
     return true
 
