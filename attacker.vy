@@ -8,12 +8,12 @@ owner_address: public(address)
 
 @external
 def __init__():
-    self.dao_address = ZERO_ADDRESS
-    self.owner_address = ZERO_ADDRESS
+    self.dao_address = empty(address)
+    self.owner_address = empty(address)
 
 @internal
 def _attack() -> bool:
-    assert self.dao_address != ZERO_ADDRESS
+    assert self.dao_address != empty(address)
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
